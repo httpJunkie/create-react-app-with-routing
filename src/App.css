@@ -1,0 +1,12 @@
+a {
+  /* color: powderblue; */
+  margin: 5px;
+}
+
+a, a:visited {
+  color: blue;
+}
+
+a.active {
+  color: red;
+}

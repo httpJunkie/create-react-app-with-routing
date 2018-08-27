@@ -1,16 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import './App.css';
+
+const isActiveFunc = (match, location) => {
+  // console.log(match, location);
+  return match;
+}
 
 // stateless function components
-
 const Home = () => <h1>Home</h1>
 
 const Links = () => (
   <nav>
-    <NavLink to="/">Home</NavLink><br/>
-    <NavLink to="/about">About</NavLink><br/>
+    <NavLink exact activeClassName="active" to="/">Home</NavLink><br/>
     {/* replacing the NavLink says: when someone clicks me, my route will replace the current route on the history stack */}
-    <NavLink replace to="/contact">Contact</NavLink>
+    <NavLink replace activeStyle={{color: 'green'}} to="/about">About</NavLink><br/>
+    {/* 
+      we can determine if the activeClassName class is applied with the use of a function as below 
+      *note `isActive()` function takes the args: match and location
+    */}
+    <NavLink isActive={isActiveFunc} activeClassName="active" to="/contact">Contact</NavLink>
   </nav>
 )
 
