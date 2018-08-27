@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 // stateless function components
 
@@ -7,10 +7,10 @@ const Home = () => <h1>Home</h1>
 
 const Links = () => (
   <nav>
-    <Link to="/">Home</Link><br/>
-    <Link to="/about">About</Link><br/>
-    {/* replacing the link says: when someone clicks me, my route will replace the current route on the history stack */}
-    <Link replace to="/contact">Contact</Link>
+    <NavLink to="/">Home</NavLink><br/>
+    <NavLink to="/about">About</NavLink><br/>
+    {/* replacing the NavLink says: when someone clicks me, my route will replace the current route on the history stack */}
+    <NavLink replace to="/contact">Contact</NavLink>
   </nav>
 )
 
