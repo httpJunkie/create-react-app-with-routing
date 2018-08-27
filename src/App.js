@@ -32,6 +32,9 @@ const Links = () => (
     {/* catchall route */}
     <NavLink to="/nexpage">non-existing page</NavLink>
 
+    {/* itemid */}
+    <NavLink to="/somepage/123456">itemid</NavLink>
+
   </nav>
 )
 
@@ -46,7 +49,7 @@ const App = () => (
         {/* Render component with component prop */}
         <Route exact path="/" component={Home} />
 
-        <Route exact path="/other/:page?-:subpage" render={({ match }) => (
+        <Route path="/other/:page?-:subpage" render={({ match }) => (
           <h1>
             Page: {match.params.page || 'Home'}<br />
             Subpage: {match.params.subpage}
@@ -54,7 +57,7 @@ const App = () => (
         )} />
 
         {/* Use Regexes with route params like: http://localhost:3000/regex/12-18-2018/.html*/}
-        <Route exact path="/regex/:a(\d{2}-\d{2}-\d{4})/:b(\.[a-z]+)" render={({ match }) => (
+        <Route path="/regex/:a(\d{2}-\d{2}-\d{4})/:b(\.[a-z]+)" render={({ match }) => (
           <h1>
             ParamA: {match.params.a}<br />
             ParamB: {match.params.b}
@@ -77,8 +80,11 @@ const App = () => (
           </div>
         )} />
 
+        {/* If we do something like this, the route has to come before the catchall routew! */}
+        <Route path="/somepage/:itemid" render={({match}) => <h1>Item: {match.params.itemid}</h1>} />
+
         {/* A route without a path should always render! */}
-        <Route exact render={() => <h1>Page not Fizzound!</h1>} />
+        <Route exact render={() => <h1>Page not Found!</h1>} />
       </Switch>
 
     </div>
